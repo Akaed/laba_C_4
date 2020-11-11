@@ -1,44 +1,54 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="laba_c" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/laba_c" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/laba_c" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-		</Compiler>
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
-			<lib_finder disable_auto="1" />
-		</Extensions>
-	</Project>
-</CodeBlocks_project_file>
+#include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+	
+int f1(int *arr,int len){
+
+    int i;
+    int count = 0;
+    int srednee = 0;
+   for (int i = 0; i < len; ++i) {
+      if(arr[i] > 0 && arr[i] % 2 == 0){
+        count = count + 1;
+        srednee = srednee + arr[i];
+      }
+    }
+    printf("%i\t",srednee/count);
+    return  srednee/count;
+}
+int f2(int *arr,int len){
+        int i;
+        int max = arr[0];
+        for (int i = 0; i < len; ++i) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    printf("%i",max);
+    return max;
+}
+int f3(int *arr,int len){
+         int min = arr[0];
+         int i;
+         for (int i = 0; i < len; ++i) {
+        if (arr[i] > min) {
+            arr[i] = min;
+        }
+    }
+    printf("%i\t",min);
+    return min;
+}
+
+
+int main()
+{
+    int arr[10] = {1, 3, 2, 4, 8, 11, 3, 3, 8, 7};
+    int (*vizov)(int *,int);
+    vizov = f1;
+    vizov(arr,10);
+    vizov = f2;
+    vizov(arr,10);
+    vizov = f3;
+    vizov(arr,10);
+    return 0;
+}
